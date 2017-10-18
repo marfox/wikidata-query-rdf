@@ -1,3 +1,6 @@
 [submodule "gui"]
 	path = gui
 	url = https://gerrit.wikimedia.org/r/wikidata/query/gui
+[submodule "pst-backend"]
+	path = pst-backend
+	url = git@github.com:marfox/pst-backend.git
