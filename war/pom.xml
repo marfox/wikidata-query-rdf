@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.wikidata.query.rdf</groupId>
     <artifactId>parent</artifactId>
-    <version>0.2.5</version>
+    <version>0.3.0-SNAPSHOT</version>
   </parent>
   <artifactId>blazegraph-service</artifactId>
   <packaging>war</packaging>
@@ -78,6 +78,18 @@
     <dependency>
       <groupId>org.wikidata.query.rdf</groupId>
       <artifactId>common</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.wikidata.query.rdf</groupId>
+      <artifactId>pst-backend</artifactId>
+      <version>${project.version}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.wikidata.query.rdf</groupId>
+      <artifactId>tools</artifactId>
+      <version>${project.version}</version>
       <scope>runtime</scope>
     </dependency>
   </dependencies>
