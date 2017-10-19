@@ -187,6 +187,36 @@
           <param-value>true</param-value>
       </init-param>
    </servlet>
+  <!-- BEGIN: primary sources tool APIs -->
+  <servlet>
+    <servlet-name>Upload</servlet-name>
+    <display-name>Upload</display-name>
+    <description>Primary sources tool ingestion API upload service</description>
+    <servlet-class>org.wikidata.query.rdf.primarysources.ingestion.UploadServlet</servlet-class>
+    <async-supported>true</async-supported>
+  </servlet>
+    <servlet>
+        <servlet-name>Update</servlet-name>
+        <display-name>Update</display-name>
+        <description>Primary sources tool ingestion API update service</description>
+        <servlet-class>org.wikidata.query.rdf.primarysources.ingestion.UpdateServlet</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet>
+        <servlet-name>Suggest</servlet-name>
+        <display-name>Suggest</display-name>
+        <description>Primary sources tool curation API suggest service</description>
+        <servlet-class>org.wikidata.query.rdf.primarysources.curation.SuggestServlet</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet>
+        <servlet-name>Curate</servlet-name>
+        <display-name>Curate</display-name>
+        <description>Primary sources tool curation API curate service</description>
+        <servlet-class>org.wikidata.query.rdf.primarysources.curation.CurateServlet</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
+  <!--END: primary sources tool APIs -->
   <!-- Note: The HALoadBalancerServlet is deployed from override-web.xml -->
   <!-- Serve anything under /html/* as a simple file. -->
   <servlet-mapping>
@@ -244,6 +274,24 @@
   <servlet-name>Counters</servlet-name>
   <url-pattern>/counters</url-pattern>
   </servlet-mapping>
+  <!--BEGIN: primary sources tool APIs -->
+  <servlet-mapping>
+    <servlet-name>Upload</servlet-name>
+    <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Update</servlet-name>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Suggest</servlet-name>
+        <url-pattern>/suggest</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Curate</servlet-name>
+        <url-pattern>/curate</url-pattern>
+    </servlet-mapping>
+  <!--END: primary sources tool APIs -->
   <!-- Map the initial request into the UI. -->
   <welcome-file-list>
     <welcome-file>html/index.html</welcome-file>
