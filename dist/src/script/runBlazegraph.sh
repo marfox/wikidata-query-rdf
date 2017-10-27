@@ -72,6 +72,9 @@ exec java \
      -Dcom.bigdata.rdf.sail.sparql.PrefixDeclProcessor.additionalDeclsFile=$DIR/prefixes.conf \
      -Dorg.wikidata.query.rdf.blazegraph.mwapi.MWApiServiceFactory.config=$DIR/mwservices.json \
      -Dcom.bigdata.rdf.sail.webapp.client.HttpClientConfigurator=org.wikidata.query.rdf.blazegraph.ProxiedHttpConnectionFactory \
+     -Dorg.wikidata.primarysources.blazegraph.host=$HOST \
+     -Dorg.wikidata.primarysources.blazegraph.port=$PORT \
+     -Dorg.wikidata.primarysources.blazegraph.context=/$CONTEXT \
      -Dhttp.userAgent="${USER_AGENT}" \
      ${BLAZEGRAPH_OPTS} \
      -jar jetty-runner*.jar \
