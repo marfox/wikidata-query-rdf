@@ -216,6 +216,13 @@
         <servlet-class>org.wikidata.query.rdf.primarysources.curation.CurateServlet</servlet-class>
         <async-supported>true</async-supported>
     </servlet>
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <display-name>Search</display-name>
+        <description>Primary sources tool ingestion API search service</description>
+        <servlet-class>org.wikidata.query.rdf.primarysources.curation.SearchServlet</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
   <!--END: primary sources tool APIs -->
   <!-- Note: The HALoadBalancerServlet is deployed from override-web.xml -->
   <!-- Serve anything under /html/* as a simple file. -->
@@ -290,6 +297,10 @@
     <servlet-mapping>
         <servlet-name>Curate</servlet-name>
         <url-pattern>/curate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
   <!--END: primary sources tool APIs -->
   <!-- Map the initial request into the UI. -->
