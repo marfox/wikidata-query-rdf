@@ -219,8 +219,15 @@
     <servlet>
         <servlet-name>Search</servlet-name>
         <display-name>Search</display-name>
-        <description>Primary sources tool ingestion API search service</description>
+        <description>Primary sources tool curation API search service</description>
         <servlet-class>org.wikidata.query.rdf.primarysources.curation.SearchServlet</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet>
+        <servlet-name>Random</servlet-name>
+        <display-name>Random</display-name>
+        <description>Primary sources tool curation API random item service</description>
+        <servlet-class>org.wikidata.query.rdf.primarysources.curation.RandomServlet</servlet-class>
         <async-supported>true</async-supported>
     </servlet>
   <!--END: primary sources tool APIs -->
@@ -301,6 +308,10 @@
     <servlet-mapping>
         <servlet-name>Search</servlet-name>
         <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Random</servlet-name>
+        <url-pattern>/random</url-pattern>
     </servlet-mapping>
   <!--END: primary sources tool APIs -->
   <!-- Map the initial request into the UI. -->
