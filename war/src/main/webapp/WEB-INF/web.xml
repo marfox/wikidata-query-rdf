@@ -188,6 +188,9 @@
       </init-param>
    </servlet>
   <!-- BEGIN: primary sources tool APIs -->
+    <listener>
+        <listener-class>org.wikidata.query.rdf.primarysources.common.SubjectsCacheUpdater</listener-class>
+    </listener>
   <servlet>
     <servlet-name>Upload</servlet-name>
     <display-name>Upload</display-name>
