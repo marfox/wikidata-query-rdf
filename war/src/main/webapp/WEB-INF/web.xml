@@ -233,7 +233,15 @@
         <servlet-class>org.wikidata.query.rdf.primarysources.curation.RandomServlet</servlet-class>
         <async-supported>true</async-supported>
     </servlet>
+    <servlet>
+        <servlet-name>Datasets</servlet-name>
+        <display-name>Datasets</display-name>
+        <description>Primary sources tool curation API datasets list service</description>
+        <servlet-class>org.wikidata.query.rdf.primarysources.curation.DatasetsServlet</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
   <!--END: primary sources tool APIs -->
+
   <!-- Note: The HALoadBalancerServlet is deployed from override-web.xml -->
   <!-- Serve anything under /html/* as a simple file. -->
   <servlet-mapping>
@@ -291,6 +299,7 @@
   <servlet-name>Counters</servlet-name>
   <url-pattern>/counters</url-pattern>
   </servlet-mapping>
+
   <!--BEGIN: primary sources tool APIs -->
   <servlet-mapping>
     <servlet-name>Upload</servlet-name>
@@ -316,7 +325,12 @@
         <servlet-name>Random</servlet-name>
         <url-pattern>/random</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Datasets</servlet-name>
+        <url-pattern>/datasets</url-pattern>
+    </servlet-mapping>
   <!--END: primary sources tool APIs -->
+
   <!-- Map the initial request into the UI. -->
   <welcome-file-list>
     <welcome-file>html/index.html</welcome-file>
