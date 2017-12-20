@@ -11,3 +11,5 @@ target/
 .execution-hints-*.log
 node_modules
 war/overlays
+build.sh
+package.sh
