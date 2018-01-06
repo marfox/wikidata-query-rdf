@@ -189,7 +189,7 @@
    </servlet>
   <!-- BEGIN: primary sources tool APIs -->
     <listener>
-        <listener-class>org.wikidata.query.rdf.primarysources.common.SubjectsCacheUpdater</listener-class>
+        <listener-class>org.wikidata.query.rdf.primarysources.common.CacheUpdater</listener-class>
     </listener>
   <servlet>
     <servlet-name>Upload</servlet-name>
@@ -238,6 +238,13 @@
         <display-name>Datasets</display-name>
         <description>Primary sources tool curation API datasets list service</description>
         <servlet-class>org.wikidata.query.rdf.primarysources.curation.DatasetsServlet</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet>
+        <servlet-name>Statistics</servlet-name>
+        <display-name>Statistics</display-name>
+        <description>Primary sources tool statistics API user and datasets statistics</description>
+        <servlet-class>org.wikidata.query.rdf.primarysources.statistics.StatisticsServlet</servlet-class>
         <async-supported>true</async-supported>
     </servlet>
   <!--END: primary sources tool APIs -->
@@ -328,6 +335,10 @@
     <servlet-mapping>
         <servlet-name>Datasets</servlet-name>
         <url-pattern>/datasets</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Statistics</servlet-name>
+        <url-pattern>/statistics</url-pattern>
     </servlet-mapping>
   <!--END: primary sources tool APIs -->
 
