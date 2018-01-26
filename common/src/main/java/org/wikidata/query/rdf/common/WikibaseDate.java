@@ -347,12 +347,12 @@ public class WikibaseDate {
      */
     public enum ToStringFormat {
         /**
-         * Wikidata style (+YYYYYYYYYYYY-MM-DDThh:mm:ssZ).
+         * Wikidata style (+YYYY-MM-DDThh:mm:ssZ).
          */
         WIKIDATA {
             @Override
             public String format(WikibaseDate date) {
-                return String.format(Locale.ROOT, "%+012d-%02d-%02dT%02d:%02d:%02dZ", date.year, date.month, date.day,
+                return String.format(Locale.ROOT, "%+04d-%02d-%02dT%02d:%02d:%02dZ", date.year, date.month, date.day,
                         date.hour, date.minute, date.second);
             }
         },

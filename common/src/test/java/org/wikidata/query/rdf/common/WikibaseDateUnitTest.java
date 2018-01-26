@@ -29,7 +29,7 @@ public class WikibaseDateUnitTest extends RandomizedTest {
     @Test
     public void epoch() {
         WikibaseDate wbDate = check(1970, 1, 1, 0, 0, 0);
-        assertEquals("+00000001970-01-01T00:00:00Z", wbDate.toString(ToStringFormat.WIKIDATA));
+        assertEquals("+1970-01-01T00:00:00Z", wbDate.toString(ToStringFormat.WIKIDATA));
         assertEquals("1970-01-01T00:00:00Z", wbDate.toString(ToStringFormat.DATE_TIME));
         assertEquals("1970-01-01", wbDate.toString(ToStringFormat.DATE));
         assertEquals(wbDate, fromString("1970-1-1"));
