@@ -254,6 +254,13 @@
         <servlet-class>org.wikidata.query.rdf.primarysources.statistics.PropertiesServlet</servlet-class>
         <async-supported>true</async-supported>
     </servlet>
+    <servlet>
+        <servlet-name>Values</servlet-name>
+        <display-name>Values</display-name>
+        <description>Primary sources tool statistics API vlaues list service</description>
+        <servlet-class>org.wikidata.query.rdf.primarysources.statistics.ValuesServlet</servlet-class>
+        <async-supported>true</async-supported>
+    </servlet>
   <!--END: primary sources tool APIs -->
 
   <!-- Note: The HALoadBalancerServlet is deployed from override-web.xml -->
@@ -350,6 +357,10 @@
     <servlet-mapping>
         <servlet-name>Properties</servlet-name>
         <url-pattern>/properties</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Values</servlet-name>
+        <url-pattern>/values</url-pattern>
     </servlet-mapping>
   <!--END: primary sources tool APIs -->
 
