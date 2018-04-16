@@ -191,6 +191,16 @@
     <listener>
         <listener-class>org.wikidata.query.rdf.primarysources.common.CacheUpdater</listener-class>
     </listener>
+
+    <filter>
+        <filter-name>CORS-header-filter</filter-name>
+        <filter-class>org.wikidata.query.rdf.primarysources.common.CorsHeaderFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>CORS-header-filter</filter-name>
+        <url-pattern>/sparql</url-pattern>
+    </filter-mapping>
+
   <servlet>
     <servlet-name>Upload</servlet-name>
     <display-name>Upload</display-name>
