@@ -199,6 +199,16 @@
     <filter-mapping>
         <filter-name>CORS-header-filter</filter-name>
         <url-pattern>/sparql</url-pattern>
+        <url-pattern>/upload</url-pattern>
+        <url-pattern>/update</url-pattern>
+        <url-pattern>/suggest</url-pattern>
+        <url-pattern>/curate</url-pattern>
+        <url-pattern>/search</url-pattern>
+        <url-pattern>/random</url-pattern>
+        <url-pattern>/datasets</url-pattern>
+        <url-pattern>/statistics</url-pattern>
+        <url-pattern>/properties</url-pattern>
+        <url-pattern>/values</url-pattern>
     </filter-mapping>
 
   <servlet>
