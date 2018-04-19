@@ -21,6 +21,7 @@
     <!-- Javadoc: this project is not a library, so documentation on variables, non-public methods and auto-documenting fields is not needed -->
     <module name="JavadocType">
       <property name="allowMissingParamTags" value="true" /> <!-- Sometimes it's just overkill -->
+      <property name="scope" value="public" /> <!-- Public Javadoc is made for public classes -->
     </module>
     <module name="JavadocMethod">
       <property name="allowUndeclaredRTE" value="true" /> <!-- You aren't supposed to declare these anyway... -->
