@@ -9,27 +9,27 @@
     "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
 
 <module name="Checker">
+
   <module name="SuppressWarningsFilter" />
   <module name="SuppressionFilter">
     <!-- Suppresses some checks for tests. -->
     <property name="file" value="${checkstyle.suppressions}" />
   </module>
+
   <module name="TreeWalker">
     <module name="SuppressWarningsHolder" />
-    <!-- Javadoc -->
+    <!-- Javadoc: this project is not a library, so documentation on variables, non-public methods and auto-documenting fields is not needed -->
     <module name="JavadocType">
-      <property name="allowMissingParamTags" value="true" /> <!-- Sometimes its just overkill -->
+      <property name="allowMissingParamTags" value="true" /> <!-- Sometimes it's just overkill -->
     </module>
     <module name="JavadocMethod">
       <property name="allowUndeclaredRTE" value="true" /> <!-- You aren't supposed to declare these anyway... -->
-      <property name="allowMissingReturnTag" value="true" /> <!-- Sometimes its just overkill -->
-      <property name="allowMissingParamTags" value="true" /> <!-- Sometimes its just overkill -->
+      <property name="allowMissingReturnTag" value="true" /> <!-- Sometimes it's just overkill -->
+      <property name="allowMissingParamTags" value="true" /> <!-- Sometimes it's just overkill -->
       <property name="tokens" value="METHOD_DEF" /> <!-- Constructors don't always need Javadoc -->
+      <property name="scope" value="public" /> <!-- Public Javadoc is made for public methods -->
     </module>
     <module name="JavadocStyle" />
-    <module name="JavadocVariable">
-      <property name="ignoreNamePattern" value="log|serialVersionUID" /> <!-- These are obvious. -->
-    </module>
 
 
     <!-- Formatting -->
@@ -93,7 +93,7 @@
     <module name="PackageDeclaration" />
 
 
-    <!-- Import -->
+    <!-- Import: order is java, javax, org, com -->
     <module name="AvoidStarImport" />
     <module name="IllegalImport" />
     <module name="RedundantImport" />
@@ -108,11 +108,10 @@
     </module>
 
 
-    <!-- Common coding problems/opinionates stuff -->
+    <!-- Common coding problems/opinionated stuff -->
     <module name="CovariantEquals" />
     <module name="EqualsHashCode" />
     <module name="InnerAssignment" /> <!-- Too suprising -->
-    <module name="MissingSwitchDefault" /> <!-- Just comment that its a noop if its a noop -->
     <module name="ModifiedControlVariable" />
     <module name="SimplifyBooleanExpression" />
     <module name="SimplifyBooleanReturn" />
@@ -121,33 +120,33 @@
     <module name="SuperFinalize" />
     <module name="IllegalCatch" />
     <module name="IllegalThrows" />
-    <module name="ExplicitInitialization" /> <!-- May as well let Java do what its going to do -->
+    <module name="ExplicitInitialization" /> <!-- May as well let Java do what it's going to do -->
     <module name="DefaultComesLast" />
     <module name="FallThrough" />
     <module name="MultipleVariableDeclarations" />
     <module name="VisibilityModifier" /> <!-- May as well follow standard Java style here -->
     <module name="FinalClass" />
     <module name="HideUtilityClassConstructor" />
-    <!-- This one usually offers good to interesting suggestions but its too much work to implement now. <module name="DesignForExtension"/> -->
     <module name="MutableException" />
     <module name="UncommentedMain">
       <property name="excludedClasses" value="org\.wikidata\.query\.rdf\.tool\..*" />
     </module>
 
 
-    <!-- Really opinionated. Probably wrong. -->
+    <!-- Really opinionated. Probably wrong. Do not raise errors on the following modules -->
     <module name="ClassFanOutComplexity">
       <property name="id" value="checkstyle:classfanoutcomplexity"/>
       <property name="max" value="25"/>
+      <property name="severity" value="warning"/>
     </module>
-    <module name="CyclomaticComplexity" />
-    <module name="NPathComplexity" />
+    <module name="CyclomaticComplexity">
+      <property name="severity" value="warning"/>
+    </module>
+    <module name="NPathComplexity">
+      <property name="severity" value="warning"/>
+    </module>
 
-    <!-- These are explicitly ok -->
-    <!-- <module name="ParameterAssignment"/> Usually used when munging parameters. Fine. -->
-    <!-- <module name="TrailingComment"/> -->
-    <!-- <module name="HiddenField"/> It turns out that we do this all the time in setters and constructors. -->
-    <!-- <module name="ImportOrder"> Its just not worth trying to get imports to line up. -->
+
   </module>
 
   <!-- More formatting stuff that can't be in TreeWalker -->
