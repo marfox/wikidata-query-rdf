@@ -13,5 +13,7 @@
   <suppress checks="JavadocType" files=".*Test.java" />
   <suppress checks="JavadocMethod" files=".*Test.java" />
   <suppress checks="JavadocVariable" files=".*Test.java" />
+  <!-- Classes responsible for the cache spawn separate threads and really need to catch everything, otherwise exceptions would be thrown away silently -->
+  <suppress checks="IllegalCatch" files=".*Cache.java" />
 </suppressions>
                 
