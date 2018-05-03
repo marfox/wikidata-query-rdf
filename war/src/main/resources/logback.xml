@@ -1,15 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} IP:%X{req.remoteHost} UA:%X{req.userAgent} - %msg%n</pattern>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} IP:%X{req.xForwardedFor} UA:%X{req.userAgent} - %msg%n</pattern>
+            <outputPatternAsHeader>true</outputPatternAsHeader>
+        </encoder>
+    </appender>
+
+    <!-- Log rotation: roll daily, gzip files, keep 3 years archive or max 30 GB -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${logDir}/pst.log</file> <!-- Directory passed as a Java property -->
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Rolling time inferred from the date pattern; compression inferred from the file extension -->
+            <fileNamePattern>/srv/backend/logs/pst.%d{yyyy-MM-dd}.log.gz</fileNamePattern>
+            <maxHistory>1095</maxHistory> <!-- 3 years -->
+            <totalSizeCap>30GB</totalSizeCap>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} IP:%X{req.xForwardedFor} UA:%X{req.userAgent} - %msg%n</pattern>
             <outputPatternAsHeader>true</outputPatternAsHeader>
         </encoder>
     </appender>
 
     <logger name="org.wikidata.query.rdf" level="info"/>
+    <logger name="org.wikidata.query.rdf.primarysources" level="${logLevel}"/> <!-- Log level passed as a Java property -->
+    <!-- Silence MemoryManagerOutOfMemory Blazegraph errors: the workaround in
+         https://sourceforge.net/p/bigdata/mailman/message/35380438/
+         seems to have no effect -->
+    <logger name="com.bigdata.util.concurrent.Haltable" level="off"/>
 
     <root level="warn">
         <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
     </root>
 </configuration>
